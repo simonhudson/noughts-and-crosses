@@ -1,7 +1,20 @@
 .board {
-
+	box-sizing: border-box;
+	display: grid;
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+	grid-template-columns: repeat(3, 80px);
+	grid-template-rows: repeat(3, 80px);
 }
 
 .square {
+	border: 1px solid #555;
+}
 
+.nought {
+	background: red;
+}
+
+.cross {
+	background: green;
 }
