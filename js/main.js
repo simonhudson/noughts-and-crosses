@@ -1,7 +1,7 @@
 'use strict';
 
 var board = document.querySelector('.js-board');
-
+var winnerMsg = document.querySelector('.js-winner');
 var occupiedSquares = [];
 
 function isOccupied(square) {
@@ -19,14 +19,10 @@ function checkForWin() {
 		[1,5,9],
 		[3,5,7]
 	];
-	console.log(occupiedSquares);
 	winningRows.forEach(function(row) {
-		console.log(winningRows.indexOf(occupiedSquares) > -1);
-		// if (row === occupiedSquares) {
-		// 	console.log(row);
-		// 	console.log(occupiedSquares);
-		// 	alert('Winner!');
-		// }
+		if (row.join('-') === occupiedSquares.join('-')) {
+			winnerMsg.style.display = 'block';
+		}
 	});
 }
 
@@ -46,6 +42,7 @@ function setOccupied(square, isComputer) {
 
 function init() {
 	var squares = document.querySelectorAll('.js-square');
+	winnerMsg.style.display = 'none';
 	squares.forEach(function(square) {
 		square.addEventListener('click', function(e) {
 			e.preventDefault ? e.preventDefault() : (e.returnValue = false);
